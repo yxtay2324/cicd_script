@@ -7,8 +7,12 @@ pipeline {
     stages {
         stage("create text files") {
             steps {
-                sh "printf 'texts1' > file1.txt"
-                sh "printf 'texts2' > file2.txt"
+                script {
+                    sh "touch file1.txt"
+                    sg "touch file2.txt"
+                    sh "printf 'texts1' > file1.txt"
+                    sh "printf 'texts2' > file2.txt"
+                }
             }            
         }
 
