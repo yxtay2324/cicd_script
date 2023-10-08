@@ -9,7 +9,7 @@ pipeline {
             steps {
                 script {
                     sh "touch file1.txt"
-                    sg "touch file2.txt"
+                    sh "touch file2.txt"
                     sh "printf 'texts1' > file1.txt"
                     sh "printf 'texts2' > file2.txt"
                 }
