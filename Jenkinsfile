@@ -5,6 +5,12 @@ pipeline {
     agent any
     
     stages {
+        stage('echo line') {
+            steps {
+                echo 'test'
+            }
+        }
+        
         stage('create text files') {
             steps {
                 sh 'touch file1.txt'
