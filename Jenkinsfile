@@ -19,8 +19,8 @@ pipeline {
         stage("read files") {
             steps {
                 script {
-                    userDefContents = readFile 'texts1.txt'
-                    parserDefContents = readFile 'texts2.txt'
+                    userDefContents = readFile 'file1.txt'
+                    parserDefContents = readFile 'file2.txt'
                 }
             }
         }
