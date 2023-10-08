@@ -1,22 +1,30 @@
+def userDefContents
+def parserDefContents
+
 pipeline {
     agent any
     
     stages {
-        stage("build") {
+        stage("create text files") {
             steps {
-                echo "building"
+                sh "printf 'texts1' > file1.txt"
+                sh "printf 'texts2' > file2.txt"
             }            
         }
 
-        stage("test") {
+        stage("read files") {
             steps {
-                echo "testing"
+                script {
+                    userDefContents = readFile 'texts1.txt'
+                    parserDefContents = readFile 'texts2.txt'
+                }
             }
         }
 
-        stage("deploy") {
+        stage("comparing defs") {
             steps {
-                echo "deploying"
+                echo userDefContents
+                echo parserDefContents
             }
         }
     }
