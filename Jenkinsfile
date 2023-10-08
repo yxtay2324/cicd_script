@@ -9,9 +9,14 @@ pipeline {
             steps {
                 sh 'touch file1.txt'
                 sh 'touch file2.txt'
+            }            
+        }
+
+        stage("input text files") {
+            steps {
                 sh "printf 'texts1' > file1.txt"
                 sh "printf 'texts2' > file2.txt"
-            }            
+            }
         }
 
         stage("read files") {
