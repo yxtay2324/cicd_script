@@ -8,7 +8,6 @@ pipeline {
         stage('create text files') {
             steps {
                 sh 'touch file1.txt'
-                sh 'touch file2.txt'
             }            
         }
 
