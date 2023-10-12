@@ -35,7 +35,7 @@ pipeline {
                     try {
                         sh "diff -q file1.txt file2.txt"
                         defContent = false
-                        echo "No differences picked up on definitions. Pushing API to server."
+                        echo "No differences picked up on definitions"
                     }
                     catch (err) {
                         defContent = true
@@ -45,9 +45,25 @@ pipeline {
             }
         }
 
-        stage('checking result') {
+        stage('succeed check') {
+            when {
+                expression {
+                    defContent
+                }
+            }
             steps {
-                 echo "Result: ${defContent}"
+                 echo "Pushing API to server."
+            }
+        }
+
+        stage('failed check') {
+            when {
+                expression {
+                    !defContent
+                }
+            }
+            steps {
+                echo "Rejecting API"
             }
         }
     }
