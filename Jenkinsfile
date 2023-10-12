@@ -1,5 +1,6 @@
 def userDefContents
 def parserDefContents
+def check_result
 
 pipeline {
     agent any
@@ -30,9 +31,12 @@ pipeline {
     
         stage('comparing defs') {
             steps {
-                script {
-                    sh "diff -q file1.txt file2.txt"
-                }
+                check_result = sh(
+                    script: "diff -q file1.txt file2.txt",
+                    returnStdout: true
+                ).trim()
+
+                echo check_result
             }
         }
     }
