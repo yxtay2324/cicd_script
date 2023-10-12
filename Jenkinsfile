@@ -1,6 +1,6 @@
 def userDefContents
 def parserDefContents
-def check_result
+def defContentsDiffer
 
 pipeline {
     agent any
@@ -34,8 +34,11 @@ pipeline {
                 script {
                     try {
                         sh "diff -q file1.txt file2.txt"
+                        defContent = false
+                        echo "No differences picked up on definitions. Pushing API to server."
                     }
                     catch (err) {
+                        defContent = true
                         echo "Files content are different. ${err}"
                     }
                 }
@@ -44,7 +47,7 @@ pipeline {
 
         stage('checking result') {
             steps {
-                 echo "Result: ${check_result}"
+                 echo "Result: ${defContent}"
             }
         }
     }
