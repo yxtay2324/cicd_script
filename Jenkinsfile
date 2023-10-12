@@ -37,7 +37,7 @@ pipeline {
                         returnStdout: true
                     ).trim()
     
-                    echo "${check_result}"
+                    echo "Result: ${check_result}"
                 }
             }
         }
