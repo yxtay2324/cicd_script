@@ -31,11 +31,13 @@ pipeline {
     
         stage('comparing defs') {
             steps {
-                try {
-                    sh "diff -q file1.txt file2.txt"
-                }
-                catch (err) {
-                    echo "Files content are different. ${err}"
+                script {
+                    try {
+                        sh "diff -q file1.txt file2.txt"
+                    }
+                    catch (err) {
+                        echo "Files content are different. ${err}"
+                    }
                 }
             }
         }
