@@ -30,8 +30,7 @@ pipeline {
     
         stage('comparing defs') {
             steps {
-                echo userDefContents
-                echo parserDefContents
+                sh "diff userDefContents parserDefContents"
             }
         }
     }
