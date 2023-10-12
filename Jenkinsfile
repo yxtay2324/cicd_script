@@ -34,11 +34,11 @@ pipeline {
                 script {
                     try {
                         sh "diff -q file1.txt file2.txt"
-                        defContent = false
+                        defContentDiffer = false
                         echo "No differences picked up on definitions"
                     }
                     catch (err) {
-                        defContent = true
+                        defContentDiffer = true
                         echo "Files content are different. ${err}"
                     }
                 }
@@ -48,7 +48,7 @@ pipeline {
         stage('succeed check') {
             when {
                 expression {
-                    defContent
+                    !defContentDiffer
                 }
             }
             steps {
@@ -59,7 +59,7 @@ pipeline {
         stage('failed check') {
             when {
                 expression {
-                    !defContent
+                    defContentDiffer
                 }
             }
             steps {
