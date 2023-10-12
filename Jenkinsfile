@@ -31,12 +31,14 @@ pipeline {
     
         stage('comparing defs') {
             steps {
-                check_result = sh(
-                    script: "diff -q file1.txt file2.txt",
-                    returnStdout: true
-                ).trim()
-
-                echo check_result
+                script {
+                    check_result = sh(
+                        script: "diff -q file1.txt file2.txt",
+                        returnStdout: true
+                    ).trim()
+    
+                    echo "${check_result}"
+                }
             }
         }
     }
