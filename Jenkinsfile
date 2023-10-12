@@ -31,7 +31,7 @@ pipeline {
         stage('comparing defs') {
             steps {
                 script {
-                    sh "diff userDefContents parserDefContents"
+                    sh "diff file1.txt file2.txt"
                 }
             }
         }
