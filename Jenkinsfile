@@ -52,7 +52,8 @@ pipeline {
                 }
             }
             steps {
-                 echo "Pushing API to server."
+                echo "Pushing API to server."
+                sh "curl -X POST -H 'Content-Type: application/json' -d @sample.json http://localhost:8080/mvp/v1/apis/upload"
             }
         }
 
