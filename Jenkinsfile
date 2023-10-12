@@ -37,8 +37,14 @@ pipeline {
                         returnStdout: true
                     ).trim()
     
-                    echo "Result: ${check_result}"
+                    
                 }
+            }
+        }
+
+        stage('checking result') {
+            steps {
+                 echo "Result: ${check_result}"
             }
         }
     }
