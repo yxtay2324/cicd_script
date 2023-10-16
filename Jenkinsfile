@@ -53,7 +53,7 @@ pipeline {
             }
             steps {
                 echo "Pushing API to server."
-                sh "curl -X POST -H 'Content-Type: application/json' -d @/Users/stellaang/.jenkins/workspace/yx-test-main/OpenAPI.json http://localhost:8081/mvp/v1/apis/upload"
+                sh "curl -X POST -H 'Content-Type: application/json' -d @/Users/stellaang/.jenkins/workspace/yx-test_main/OpenAPI.json http://localhost:8081/mvp/v1/apis/upload"
             }
         }
 
