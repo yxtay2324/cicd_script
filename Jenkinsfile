@@ -6,6 +6,7 @@ pipeline {
     agent any
 
     stages {
+        // comment out these lines to use different files
         stage('create text files') {
             steps {
                 sh 'touch file1.txt'
@@ -19,7 +20,8 @@ pipeline {
                 sh "printf 'texts1' > file2.txt"
             }
         }
-    
+        // comment out until here
+        
         stage('read files') {
             steps {
                 script {
